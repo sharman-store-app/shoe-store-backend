@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Tag(name = "Administration")
 @RestController
-@RequestMapping("/health")
+@RequestMapping("/api/health")
 public class HealthCheckController {
 
     @GetMapping
