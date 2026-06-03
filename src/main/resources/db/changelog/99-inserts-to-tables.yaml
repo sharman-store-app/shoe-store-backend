@@ -18,7 +18,6 @@ databaseChangeLog:
             columns:
                 - column: { name: name, value: 'admin' }
                 - column: { name: email, value: 'admin@google.com'}
-                - column: { name: phone, value: '123456789'}
                 - column: { name: password, value: '$2a$10$WSWYX5UxsJjWEHFXZkySG.UOuTxnvQHo5GUxkoNFYZWNzxw5woapO'}
                 - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP}
                 - column: { name: role_id, valueNumeric: 1}

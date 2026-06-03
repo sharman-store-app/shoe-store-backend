@@ -11,8 +11,6 @@ public record UserUpdateRequestDto(
         String name,
         @Email(message = "Invalid email format")
         String email,
-        @Size(min = 6, message = "Phone number must contain at least 6 digits")
-        String phone,
         @NotBlank(message = "Current password cannot be blank")
         String currentPassword,
         @Size(min = 4, max = 20, message = "Password must be between 4 and 20 characters")
