@@ -24,6 +24,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,6 +39,7 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     private final PasswordResetTokenRepository passwordResetTokenRepository;
     private final EmailService emailService;
+    private final Environment environment;
 
     @Value("${frontend.url}")
     private String frontendUrl;
@@ -93,6 +95,8 @@ public class UserServiceImpl implements UserService {
                 );
         passwordResetTokenRepository.save(passwordResetToken);
         String resetLink = frontendUrl + "/reset-password?token=" + token;
+        System.out.println("START SEND EMAIL");
+        System.out.println("MAIL_USERNAME = " + environment.getProperty("MAIL_USERNAME"));
         emailService.sendEmail(
                 user.getEmail(),
                 "Password Reset",
@@ -103,6 +107,7 @@ public class UserServiceImpl implements UserService {
                         + "This feature is currently under development, and the frontend reset "
                         + "password page is not available yet.\n\n"
         );
+        System.out.println("END SEND EMAIL");
     }
 
     @Override
