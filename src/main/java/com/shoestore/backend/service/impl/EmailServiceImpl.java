@@ -18,6 +18,13 @@ public class EmailServiceImpl implements EmailService {
         message.setTo(to);
         message.setSubject(subject);
         message.setText(text);
-        mailSender.send(message);
+        try {
+            mailSender.send(message);
+            System.out.println("EMAIL SENT");
+        } catch (Exception e) {
+            System.out.println("EMAIL ERROR: " + e.getMessage());
+            e.printStackTrace();
+            throw e;
+        }
     }
 }
