@@ -30,7 +30,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                         request.password()));
 
         User user = userRepository.findByEmail(authenticate.getName()).orElseThrow(
-                () -> new EntityNotFoundException("User not found in database"));
+                () -> new EntityNotFoundException("No account found with this email. "
+                        + "Please create an account"));
 
         String token = jwtUtil.generateToken(user.getId(), authenticate.getName());
 

@@ -1,10 +1,10 @@
 databaseChangeLog:
   - changeSet:
-      id: create-users-table
+      id: create-product-variants-table
       author: wojtek-a
       changes:
         - createTable:
-            tableName: users_table
+            tableName: product_variants
             columns:
               - column:
                   name: id
@@ -14,45 +14,31 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
               - column:
-                  name: first_name
+                  name: product_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: size
                   type: varchar(255)
                   constraints:
                     nullable: false
               - column:
-                  name: last_name
+                  name: color
                   type: varchar(255)
                   constraints:
                     nullable: false
               - column:
-                  name: email
+                  name: stock_qty
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: sku
                   type: varchar(255)
                   constraints:
                     nullable: false
                     unique: true
-              - column:
-                  name: auth_provider
-                  type: varchar(20)
-                  constraints:
-                    nullable: false
-                    defaultValueVarchar: 'LOCAL'
-              - column:
-                  name: phone
-                  type: varchar(255)
-                  constraints:
-                    nullable: true
-              - column:
-                  name: password
-                  type: varchar(255)
-              - column:
-                  name: created_at
-                  type: timestamp with time zone
-                  constraints:
-                    nullable: false
-              - column:
-                  name: role_id
-                  type: bigint
-                  constraints:
-                    nullable: false
               - column:
                   name: is_deleted
                   type: boolean
@@ -60,8 +46,8 @@ databaseChangeLog:
                   constraints:
                     nullable: false
         - addForeignKeyConstraint:
-            baseTableName: users_table
-            baseColumnNames: role_id
-            referencedTableName: roles
+            baseTableName: product_variants
+            baseColumnNames: product_id
+            referencedTableName: products
             referencedColumnNames: id
-            constraintName: fk_users_roles
+            constraintName: fk_variants_products

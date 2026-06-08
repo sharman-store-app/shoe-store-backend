@@ -2,9 +2,11 @@ package com.shoestore.backend.config;
 
 import com.shoestore.backend.security.auth.CustomUserDetailsService;
 import com.shoestore.backend.security.jwt.JwtAuthenticationFilter;
+import com.shoestore.backend.security.oauth2.OAuth2AuthenticationSuccessHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -23,6 +25,7 @@ public class SecurityConfig {
 
     private final CustomUserDetailsService userDetailsService;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final OAuth2AuthenticationSuccessHandler oauth2Authenticationsuccesshandler;
 
     @Bean
     public PasswordEncoder getPasswordEncoder() {
@@ -34,11 +37,17 @@ public class SecurityConfig {
         return httpSecurity
                 .cors(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
+
                 .authorizeHttpRequests(
                         authorize -> authorize
                                 .requestMatchers(
+                                        HttpMethod.GET, "/api/products/**")
+                                .permitAll()
+                                .requestMatchers(
                                         "/api/auth/register",
                                         "/api/auth/login",
+                                        "/api/auth/forgot-password",
+                                        "/api/auth/reset-password",
                                         "/error",
                                         "/api/health",
                                         "/api/health/**",
@@ -46,7 +55,8 @@ public class SecurityConfig {
                                         "/swagger-ui/**",
                                         "/v3/api-docs/**",
                                         "/",
-                                        "/index.html"
+                                        "/index.html",
+                                        "/oauth2/**"
                                 )
                                 .permitAll()
                                 .anyRequest()
@@ -57,6 +67,8 @@ public class SecurityConfig {
                 .addFilterBefore(jwtAuthenticationFilter,
                         UsernamePasswordAuthenticationFilter.class)
                 .userDetailsService(userDetailsService)
+                .oauth2Login(oauth2 -> oauth2
+                        .successHandler(oauth2Authenticationsuccesshandler))
                 .build();
     }
 

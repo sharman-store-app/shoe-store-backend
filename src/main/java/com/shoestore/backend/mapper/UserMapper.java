@@ -18,14 +18,8 @@ public interface UserMapper {
     @Mapping(target = "role", ignore = true)
     @Mapping(target = "deleted", ignore = true)
     @Mapping(target = "authorities", ignore = true)
+    @Mapping(target = "authProvider", constant = "LOCAL")
     User toEntity(UserRegistrationRequestDto requestDto);
-
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "createdAt", ignore = true)
-    @Mapping(target = "role", ignore = true)
-    @Mapping(target = "deleted", ignore = true)
-    @Mapping(target = "authorities", ignore = true)
-    User toEntity(UserUpdateRequestDto requestDto);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     @Mapping(target = "id", ignore = true)
@@ -33,6 +27,7 @@ public interface UserMapper {
     @Mapping(target = "role", ignore = true)
     @Mapping(target = "deleted", ignore = true)
     @Mapping(target = "authorities", ignore = true)
+    @Mapping(target = "authProvider", ignore = true)
     void updateEntity(UserUpdateRequestDto request, @MappingTarget User user);
 
     UserResponseDto toDto(User user);
