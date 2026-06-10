@@ -10,6 +10,7 @@ import com.shoestore.backend.exceptation.EntityNotFoundException;
 import com.shoestore.backend.exceptation.InvalidPasswordException;
 import com.shoestore.backend.exceptation.RegistrationException;
 import com.shoestore.backend.mapper.UserMapper;
+import com.shoestore.backend.model.AuthProvider;
 import com.shoestore.backend.model.PasswordResetToken;
 import com.shoestore.backend.model.Role;
 import com.shoestore.backend.model.RoleName;
@@ -70,9 +71,19 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserResponseDto updateUserData(UserUpdateRequestDto request, String userEmail) {
         User user = findUserByEmail(userEmail);
-        if (!passwordEncoder.matches(request.currentPassword(), user.getPassword())) {
+        boolean googleUserWithPassword = user.getAuthProvider() == AuthProvider.GOOGLE
+                && user.getPassword() != null;
+        boolean localUser = user.getAuthProvider() == AuthProvider.LOCAL;
+
+        if ((googleUserWithPassword || localUser) && (request.currentPassword() == null
+                || request.currentPassword().isEmpty())) {
+            throw new InvalidPasswordException("Current password cannot be blank");
+        }
+        if ((googleUserWithPassword || localUser)
+                && !passwordEncoder.matches(request.currentPassword(), user.getPassword())) {
             throw new InvalidPasswordException("Password is incorrect");
         }
+
         userMapper.updateEntity(request, user);
         if (request.password() != null) {
             user.setPassword(passwordEncoder.encode(request.password()));

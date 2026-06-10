@@ -1,5 +1,6 @@
 package com.shoestore.backend.config;
 
+import com.shoestore.backend.security.auth.CustomAuthenticationEntryPoint;
 import com.shoestore.backend.security.auth.CustomUserDetailsService;
 import com.shoestore.backend.security.jwt.JwtAuthenticationFilter;
 import com.shoestore.backend.security.oauth2.OAuth2AuthenticationSuccessHandler;
@@ -35,6 +36,7 @@ public class SecurityConfig {
     private final CustomUserDetailsService userDetailsService;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final OAuth2AuthenticationSuccessHandler oauth2Authenticationsuccesshandler;
+    private final CustomAuthenticationEntryPoint authenticationEntryPoint;
 
     @Bean
     public PasswordEncoder getPasswordEncoder() {
@@ -72,6 +74,8 @@ public class SecurityConfig {
                                 .anyRequest()
                                 .authenticated()
                 )
+                .exceptionHandling(exception ->
+                exception.authenticationEntryPoint(authenticationEntryPoint))
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthenticationFilter,

@@ -57,10 +57,4 @@ public class JwtUtil {
                 .getBody();
         return claimsResolver.apply(claims);
     }
-
-    public Long extractUserId(String token) {
-        return getClaimFromToken(token, claims ->
-                Long.valueOf(claims.get("userId").toString())
-        );
-    }
 }
