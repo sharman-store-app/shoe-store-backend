@@ -1,5 +1,6 @@
 package com.shoestore.backend.dto.user;
 
+import com.shoestore.backend.model.RoleName;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.time.Instant;
 
@@ -13,6 +14,8 @@ public record UserResponseDto(
         String phoneNumber,
         @Schema(example = "user@example.com")
         String email,
+        @Schema(example = "CUSTOMER")
+        RoleName role,
         Instant createdAt
 ) {
 }

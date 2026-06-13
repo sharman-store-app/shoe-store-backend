@@ -30,5 +30,6 @@ public interface UserMapper {
     @Mapping(target = "authProvider", ignore = true)
     void updateEntity(UserUpdateRequestDto request, @MappingTarget User user);
 
+    @Mapping(target = "role", source = "role.roleName")
     UserResponseDto toDto(User user);
 }
