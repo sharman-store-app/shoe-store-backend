@@ -7,7 +7,10 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
@@ -17,8 +20,11 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
+    @Value("${frontend.url}")
+    String frontendUrl;
     private final OAuth2AuthenticationService authenticationService;
     private final ObjectMapper objectMapper;
+
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
@@ -31,9 +37,12 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
 
         UserLoginResponseDto responseDto =
                 authenticationService.authenticateGoogle(email, firstName, lastName);
+        String encodedJwt = URLEncoder.encode(responseDto.token(), StandardCharsets.UTF_8);
 
-        response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(objectMapper.writeValueAsString(responseDto));
+        getRedirectStrategy().sendRedirect(
+                request,
+                response,
+                frontendUrl + "/oauth2/callback?token=" + encodedJwt
+        );
     }
 }
