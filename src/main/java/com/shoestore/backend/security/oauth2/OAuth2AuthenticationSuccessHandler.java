@@ -25,7 +25,6 @@ public class OAuth2AuthenticationSuccessHandler extends SimpleUrlAuthenticationS
     private final OAuth2AuthenticationService authenticationService;
     private final ObjectMapper objectMapper;
 
-
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                         Authentication authentication)
