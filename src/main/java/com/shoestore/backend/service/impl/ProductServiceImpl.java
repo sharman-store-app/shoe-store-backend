@@ -1,15 +1,15 @@
 package com.shoestore.backend.service.impl;
 
-import com.shoestore.backend.dto.product.ProductUpdateRequestDto;
-import com.shoestore.backend.dto.product.image.CreateProductImageRequestDto;
 import com.shoestore.backend.dto.product.CreateProductRequestDto;
-import com.shoestore.backend.dto.product.variant.CreateProductVariantRequestDto;
 import com.shoestore.backend.dto.product.ProductColorResponseDto;
 import com.shoestore.backend.dto.product.ProductColorSizeResponseDto;
 import com.shoestore.backend.dto.product.ProductDto;
+import com.shoestore.backend.dto.product.ProductResponseDto;
+import com.shoestore.backend.dto.product.ProductUpdateRequestDto;
+import com.shoestore.backend.dto.product.image.CreateProductImageRequestDto;
 import com.shoestore.backend.dto.product.image.ProductImageDto;
 import com.shoestore.backend.dto.product.image.ProductImageUpdateRequestDto;
-import com.shoestore.backend.dto.product.ProductResponseDto;
+import com.shoestore.backend.dto.product.variant.CreateProductVariantRequestDto;
 import com.shoestore.backend.dto.product.variant.ProductVariantDto;
 import com.shoestore.backend.dto.product.variant.ProductVariantUpdateRequestDto;
 import com.shoestore.backend.exceptation.EntityAlreadyExistsException;
@@ -183,10 +183,12 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public ProductVariantDto updateProductVariant(Long id, ProductVariantUpdateRequestDto request) {
         ProductVariant productVariant = findProductVariant(id);
-        Optional<ProductVariant> productVariantBySku = productVariantRepository.findBySku(request.sku());
+        Optional<ProductVariant> productVariantBySku =
+                productVariantRepository.findBySku(request.sku());
         if (request.sku() != null && productVariantBySku.isPresent()
                 && !productVariant.getId().equals(productVariantBySku.get().getId())) {
-            throw new InputMismatchException("Sku " + request.sku() + " already exists in database");
+            throw new InputMismatchException("Sku " + request.sku()
+                    + " already exists in database");
         }
         if (request.productId() != null) {
             Product product = findProduct(request.productId());
