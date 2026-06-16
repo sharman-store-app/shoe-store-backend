@@ -1,0 +1,16 @@
+﻿product_id;color;size;stock_qty;sku
+1;black;35;5;ADI-BLK-35
+1;black;36;12;ADI-BLK-36
+1;black;37;25;ADI-BLK-37
+1;black;38;3;ADI-BLK-38
+1;white;35;45;ADI-WHT-35
+1;white;36;15;ADI-WHT-36
+1;white;37;13;ADI-WHT-37
+2;red;35;15;NAM-RED-35
+2;red;36;1;NAM-RED-36
+2;red;37;9;NAM-RED-37
+2;red;38;7;NAM-RED-38
+2;white;35;23;NAM-WHT-35
+2;white;37;14;NAM-WHT-37
+2;white;41;26;NAM-WHT-41
+2;white;42;115;NAM-WHT-42

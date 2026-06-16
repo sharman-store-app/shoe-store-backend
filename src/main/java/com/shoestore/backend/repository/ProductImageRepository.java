@@ -1,0 +1,23 @@
+package com.shoestore.backend.repository;
+
+import com.shoestore.backend.model.ProductImage;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProductImageRepository extends JpaRepository<ProductImage, Long> {
+    List<ProductImage> findByProductIdIn(List<Long> productIds);
+
+    List<ProductImage> findByProductId(Long productId);
+
+    List<ProductImage> findByProductIdAndColor(Long productId, String color);
+
+    boolean existsByUrlSmallAndUrlMediumAndUrlLargeAndUrlOriginal(String urlSmall,
+                                                                  String urlMedium,
+                                                                  String urlLarge,
+                                                                  String urlOriginal);
+
+    Optional<ProductImage> findById(Long id);
+}

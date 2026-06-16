@@ -68,7 +68,8 @@ public class SecurityConfig {
                                         "/v3/api-docs/**",
                                         "/",
                                         "/index.html",
-                                        "/oauth2/**"
+                                        "/oauth2/**",
+                                        "/favicon.ico"
                                 )
                                 .permitAll()
                                 .anyRequest()
