@@ -14,10 +14,7 @@ public interface ProductImageRepository extends JpaRepository<ProductImage, Long
 
     List<ProductImage> findByProductIdAndColor(Long productId, String color);
 
-    boolean existsByUrlSmallAndUrlMediumAndUrlLargeAndUrlOriginal(String urlSmall,
-                                                                  String urlMedium,
-                                                                  String urlLarge,
-                                                                  String urlOriginal);
+    boolean existsByColorAndMainUrl(String color, String mainUrl);
 
     Optional<ProductImage> findById(Long id);
 }

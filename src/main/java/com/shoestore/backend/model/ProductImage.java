@@ -8,11 +8,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
+import org.hibernate.type.SqlTypes;
 
 @Entity
 @SQLDelete(sql = "UPDATE product_images SET is_deleted = true where id = ?")
@@ -33,17 +36,12 @@ public class ProductImage {
     @Column(nullable = false)
     private String color;
 
-    @Column(name = "url_small")
-    private String urlSmall;
+    @Column(name = "main_url", nullable = false)
+    private String mainUrl;
 
-    @Column(name = "url_medium")
-    private String urlMedium;
-
-    @Column(name = "url_large")
-    private String urlLarge;
-
-    @Column(name = "url_original")
-    private String urlOriginal;
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(name = "urls")
+    private List<String> urls;
 
     @Column(name = "is_deleted", nullable = false)
     private boolean isDeleted = false;

@@ -7,6 +7,8 @@ import com.shoestore.backend.repository.ProductRepository;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -40,12 +42,13 @@ public class ProductImageCsvImporter implements CommandLineRunner {
             while ((line = reader.readLine()) != null) {
                 String[] columns = line.split(";");
                 row++;
-                if (columns.length != 6) {
+                if (columns.length < 3) {
                     log.warn("Product image on row {} wasn't added to database. "
                             + "Not enough columns.", row);
-                } else if (columns[0].isEmpty() || columns[1].isEmpty()) {
+                } else if (columns[0].isEmpty() || columns[1].isEmpty()
+                        || columns[2].isEmpty()) {
                     log.warn("Product image on row {} wasn't added to database. "
-                            + "Product id, color can't be empty", row);
+                            + "Product id, color and main url can't be empty", row);
                 } else {
                     try {
                         Long productId = Long.valueOf(columns[0]);
@@ -57,8 +60,14 @@ public class ProductImageCsvImporter implements CommandLineRunner {
                         }
                         ProductImage productImage = new ProductImage()
                                 .setProduct(productOptional.get()).setColor(columns[1])
-                                .setUrlSmall(columns[2]).setUrlMedium(columns[3])
-                                .setUrlLarge(columns[4]).setUrlOriginal(columns[5]);
+                                .setMainUrl(columns[2]);
+                        if (columns.length > 3) {
+                            List<String> urls = new ArrayList<>();
+                            for (int i = 3; i < columns.length; i++) {
+                                urls.add(columns[i]);
+                            }
+                            productImage.setUrls(urls);
+                        }
                         productImageRepository.save(productImage);
                     } catch (NumberFormatException e) {
                         log.warn("Product image on row {} wasn't added to database. "

@@ -1,5 +1,5 @@
-﻿product_id;color;url_small;url_medium;url_large;url_original
-1;black;img/.../00.webp;img/.../01.webp;img/.../02.webp;img/.../03.webp
-1;white;img/.../00.webp;img/.../01.webp;img/.../02.webp;img/.../03.webp
-2;red;img/.../00.webp;img/.../01.webp;img/.../02.webp;img/.../03.webp
-2;white;img/.../00.webp;img/.../01.webp;img/.../02.webp;img/.../03.webp
+﻿product_id;color;main_url;urls;;;
+1;black;img/.../00.webp;img/.../01.webp;img/.../02.webp;img/.../03.webp;img/.../04.webp
+1;white;img/.../00.webp;img/.../01.webp;img/.../02.webp;img/.../03.webp;img/.../04.webp
+2;red;img/.../00.webp;img/.../01.webp;img/.../02.webp;img/.../03.webp;img/.../04.webp
+2;white;img/.../00.webp;img/.../01.webp;img/.../02.webp;img/.../03.webp;img/.../04.webp

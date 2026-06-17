@@ -74,11 +74,10 @@ public class ProductServiceImpl implements ProductService {
     public ProductImageDto createProductImage(Long productId,
                                               CreateProductImageRequestDto request) {
         Product product = findProduct(productId);
-        if (productImageRepository.existsByUrlSmallAndUrlMediumAndUrlLargeAndUrlOriginal(
-                request.urlSmall(), request.urlMedium(),
-                request.urlLarge(), request.urlOriginal())) {
-            throw new EntityAlreadyExistsException("Image with given urls already exists "
-                    + "in database");
+        if (productImageRepository.existsByColorAndMainUrl(request.color(),
+                request.mainUrl())) {
+            throw new EntityAlreadyExistsException("Image with given color and main url "
+                    + "already exists in database");
         }
         ProductImage productImage = productMapper.toProductImage(request);
         productImage.setProduct(product);
@@ -190,10 +189,6 @@ public class ProductServiceImpl implements ProductService {
             throw new InputMismatchException("Sku " + request.sku()
                     + " already exists in database");
         }
-        if (request.productId() != null) {
-            Product product = findProduct(request.productId());
-            productVariant.setProduct(product);
-        }
         if (request.size() != null) {
             productVariant.setSize(request.size());
         }
@@ -214,24 +209,14 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public ProductImageDto updateProductImage(Long id, ProductImageUpdateRequestDto request) {
         ProductImage productImage = findProductImage(id);
-        if (request.productId() != null) {
-            Product product = findProduct(request.productId());
-            productImage.setProduct(product);
-        }
         if (request.color() != null) {
             productImage.setColor(request.color());
         }
-        if (request.urlSmall() != null) {
-            productImage.setUrlSmall(request.urlSmall());
+        if (request.mainUrl() != null) {
+            productImage.setMainUrl(request.mainUrl());
         }
-        if (request.urlMedium() != null) {
-            productImage.setUrlMedium(request.urlMedium());
-        }
-        if (request.urlLarge() != null) {
-            productImage.setUrlLarge(request.urlLarge());
-        }
-        if (request.urlOriginal() != null) {
-            productImage.setUrlOriginal(request.urlOriginal());
+        if (request.urls() != null) {
+            productImage.setUrls(request.urls());
         }
         ProductImage savedProductImage = productImageRepository.save(productImage);
         return productMapper.toProductImageDto(savedProductImage);

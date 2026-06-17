@@ -24,17 +24,13 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: url_small
+                  name: main_url
                   type: varchar(255)
+                  constraints:
+                    nullable: false
               - column:
-                  name: url_medium
-                  type: varchar(255)
-              - column:
-                  name: url_large
-                  type: varchar(255)
-              - column:
-                  name: url_original
-                  type: varchar(255)
+                  name: urls
+                  type: jsonb
               - column:
                   name: is_deleted
                   type: boolean
