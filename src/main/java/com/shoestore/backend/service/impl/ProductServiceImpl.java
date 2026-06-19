@@ -203,7 +203,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public ProductImageDto updateProductImage(Long id, String color, ProductImageUpdateRequestDto request) {
+    public ProductImageDto updateProductImage(Long id, String color,
+                                              ProductImageUpdateRequestDto request) {
         ProductImage productImage = findProductImageByProductIdAndColor(id, color);
         if (request.color() != null) {
             productImage.setColor(request.color());
