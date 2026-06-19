@@ -235,8 +235,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public void deleteProductImage(Long id) {
-        ProductImage productImage = findProductImageById(id);
+    public void deleteProductImage(Long id, String color) {
+        ProductImage productImage = findProductImageByProductIdAndColor(id, color);
         productImageRepository.delete(productImage);
     }
 
@@ -259,12 +259,6 @@ public class ProductServiceImpl implements ProductService {
     private ProductVariant findProductVariant(Long id) {
         return productVariantRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("Product variant with id " + id
-                        + " not found in database"));
-    }
-
-    private ProductImage findProductImageById(Long id) {
-        return productImageRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException("Product image with id " + id
                         + " not found in database"));
     }
 

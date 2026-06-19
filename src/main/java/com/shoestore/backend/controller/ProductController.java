@@ -140,12 +140,12 @@ public class ProductController {
         productService.deleteProductVariant(id);
     }
 
-    @DeleteMapping(value = "/images/{id}")
+    @DeleteMapping(value = "/images/{id}/{color}")
     @Operation(summary = "Delete product image", description = "Delete product image. "
             + "Accessible only to ADMIN users.")
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    void deleteProductImage(@PathVariable Long id) {
-        productService.deleteProductImage(id);
+    void deleteProductImage(@PathVariable Long id, @PathVariable String color) {
+        productService.deleteProductImage(id, color);
     }
 }

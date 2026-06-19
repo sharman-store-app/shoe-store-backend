@@ -40,5 +40,5 @@ public interface ProductService {
 
     void deleteProductVariant(Long id);
 
-    void deleteProductImage(Long id);
+    void deleteProductImage(Long id, String color);
 }
