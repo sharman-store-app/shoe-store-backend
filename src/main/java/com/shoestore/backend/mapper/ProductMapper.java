@@ -66,29 +66,21 @@ public interface ProductMapper {
     }
 
     default ProductColorResponseDto toProductColorDto(
-            Product product, List<String> sizes, List<ProductImage> productImages) {
-
-        List<ProductImageResponseDto> productImagesResponseDto = productImages.stream()
-                .map(this::toProductDto)
-                .toList();
-
+            Product product, List<String> sizes, ProductImage productImage) {
         return new ProductColorResponseDto(product.getId(),
                 product.getCategory(), product.getName(), product.getDescription(),
-                product.getPrice(), product.getPriceOld(), product.getGender(), product.getSeason(),
-                product.getMaterial(), sizes, product.getCreatedAt(), productImagesResponseDto);
+                product.getPrice(), product.getPriceOld(), product.getGender(),
+                product.getSeason(), product.getMaterial(), sizes, product.getCreatedAt(),
+                this.toProductDto(productImage));
     }
 
     default ProductColorSizeResponseDto toProductColorSizeDto(
-            Product product, ProductVariant productVariant, List<ProductImage> productImageList) {
-
-        List<ProductImageResponseDto> productImageResponseDto =
-                mapImageList(productImageList, product);
-
+            Product product, ProductVariant productVariant, ProductImage productImage) {
         return new ProductColorSizeResponseDto(product.getId(),
                 product.getCategory(), product.getName(), product.getDescription(),
                 product.getPrice(), product.getPriceOld(), product.getGender(), product.getSeason(),
                 product.getMaterial(), productVariant.getStockQty(), product.getCreatedAt(),
-                productImageResponseDto);
+                this.toProductDto(productImage));
     }
 
     private List<ProductImageResponseDto> mapImageList(

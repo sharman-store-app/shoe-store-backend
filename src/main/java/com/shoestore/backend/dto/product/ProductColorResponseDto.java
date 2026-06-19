@@ -17,6 +17,6 @@ public record ProductColorResponseDto(
         String material,
         List<String> sizes,
         Instant createdAt,
-        List<ProductImageResponseDto> images
+        ProductImageResponseDto images
 ) {
 }

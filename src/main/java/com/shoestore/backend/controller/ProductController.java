@@ -113,13 +113,13 @@ public class ProductController {
         return productService.updateProductVariant(id, request);
     }
 
-    @PatchMapping(value = "/images/{id}")
+    @PatchMapping(value = "/images/{id}/{color}")
     @Operation(summary = "Update product image",
             description = "Updates a product image. Accessible only to ADMIN users.")
     @PreAuthorize("hasRole('ADMIN')")
-    ProductImageDto updateProductImage(@PathVariable Long id,
+    ProductImageDto updateProductImage(@PathVariable Long id, @PathVariable String color,
                                        @RequestBody ProductImageUpdateRequestDto request) {
-        return productService.updateProductImage(id, request);
+        return productService.updateProductImage(id, color, request);
     }
 
     @DeleteMapping(value = "/{id}")

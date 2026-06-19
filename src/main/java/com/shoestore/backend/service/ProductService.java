@@ -34,7 +34,7 @@ public interface ProductService {
 
     ProductVariantDto updateProductVariant(Long id, ProductVariantUpdateRequestDto request);
 
-    ProductImageDto updateProductImage(Long id, ProductImageUpdateRequestDto request);
+    ProductImageDto updateProductImage(Long id, String color, ProductImageUpdateRequestDto request);
 
     void deleteProduct(Long id);
 

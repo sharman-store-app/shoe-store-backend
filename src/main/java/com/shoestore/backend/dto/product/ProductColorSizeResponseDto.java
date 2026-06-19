@@ -3,7 +3,6 @@ package com.shoestore.backend.dto.product;
 import com.shoestore.backend.dto.product.image.ProductImageResponseDto;
 import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.List;
 
 public record ProductColorSizeResponseDto(
         Long id,
@@ -17,6 +16,6 @@ public record ProductColorSizeResponseDto(
         String material,
         Integer stockQty,
         Instant createdAt,
-        List<ProductImageResponseDto> images
+        ProductImageResponseDto images
 ) {
 }

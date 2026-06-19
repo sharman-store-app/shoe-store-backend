@@ -123,10 +123,8 @@ public class ProductServiceImpl implements ProductService {
         List<String> sizes = productVariants.stream()
                 .map(p -> p.getSize())
                 .toList();
-        List<ProductImage> productImages =
-                productImageRepository.findByProductIdAndColor(id, color);
-
-        return productMapper.toProductColorDto(product, sizes, productImages);
+        ProductImage productImage = findProductImageByProductIdAndColor(id, color);
+        return productMapper.toProductColorDto(product, sizes, productImage);
     }
 
     @Override
@@ -140,9 +138,7 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new EntityNotFoundException("Product with id " + id
                         + " in color " + color + " and size " + size
                         + " wasn't found in database"));
-        List<ProductImage> productImages =
-                productImageRepository.findByProductIdAndColor(id, color);
-
+        ProductImage productImages = findProductImageByProductIdAndColor(id, color);
         return productMapper.toProductColorSizeDto(product, productVariant, productImages);
     }
 
@@ -207,8 +203,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional
-    public ProductImageDto updateProductImage(Long id, ProductImageUpdateRequestDto request) {
-        ProductImage productImage = findProductImage(id);
+    public ProductImageDto updateProductImage(Long id, String color, ProductImageUpdateRequestDto request) {
+        ProductImage productImage = findProductImageByProductIdAndColor(id, color);
         if (request.color() != null) {
             productImage.setColor(request.color());
         }
@@ -239,7 +235,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @Transactional
     public void deleteProductImage(Long id) {
-        ProductImage productImage = findProductImage(id);
+        ProductImage productImage = findProductImageById(id);
         productImageRepository.delete(productImage);
     }
 
@@ -265,9 +261,16 @@ public class ProductServiceImpl implements ProductService {
                         + " not found in database"));
     }
 
-    private ProductImage findProductImage(Long id) {
+    private ProductImage findProductImageById(Long id) {
         return productImageRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("Product image with id " + id
                         + " not found in database"));
+    }
+
+    private ProductImage findProductImageByProductIdAndColor(Long id, String color) {
+        return productImageRepository.findByProductIdAndColor(id, color).orElseThrow(
+                () -> new EntityNotFoundException("Product image with product id " + id
+                + " and color " + color)
+        );
     }
 }
