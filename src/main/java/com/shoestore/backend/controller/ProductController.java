@@ -95,6 +95,18 @@ public class ProductController {
         return productService.getProductByColorAndSize(id, color, size);
     }
 
+    @GetMapping("/{productId}/variants")
+    @Operation(summary = "Get variants", description = "Get all variants for a given product id.")
+    public List<ProductVariantDto> getProductVariants(@PathVariable Long productId) {
+        return productService.getProductVariants(productId);
+    }
+
+    @GetMapping("/{productId}/images")
+    @Operation(summary = "Get images", description = "Get all images for a given product id.")
+    public List<ProductImageDto> getProductImages(@PathVariable Long productId) {
+        return productService.getProductImages(productId);
+    }
+
     @PatchMapping(value = "/{id}")
     @Operation(summary = "Update product",
             description = "Updates a product. Accessible only to ADMIN users.")

@@ -21,5 +21,11 @@ databaseChangeLog:
       file: 07-create-password-reset-tokens-table.yaml
       relativeToChangelogFile: true
   - include:
+      file: 08-create-carts-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 09-create-cart-items-table.yaml
+      relativeToChangelogFile: true
+  - include:
       file: 99-inserts-to-tables.yaml
       relativeToChangelogFile: true

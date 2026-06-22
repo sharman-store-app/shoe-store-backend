@@ -121,7 +121,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = findProduct(id);
         List<ProductVariant> productVariants = findProductByIdAndColor(id, color);
         List<String> sizes = productVariants.stream()
-                .map(p -> p.getSize())
+                .map(ProductVariant::getSize)
                 .toList();
         ProductImage productImage = findProductImageByProductIdAndColor(id, color);
         return productMapper.toProductColorDto(product, sizes, productImage);
@@ -140,6 +140,24 @@ public class ProductServiceImpl implements ProductService {
                         + " wasn't found in database"));
         ProductImage productImages = findProductImageByProductIdAndColor(id, color);
         return productMapper.toProductColorSizeDto(product, productVariant, productImages);
+    }
+
+    @Override
+    public List<ProductVariantDto> getProductVariants(Long productId) {
+        findProduct(productId);
+        List<ProductVariant> productVariants = productVariantRepository.findByProductId(productId);
+        return productVariants.stream()
+                .map(productMapper::toProductVariantDto)
+                .toList();
+    }
+
+    @Override
+    public List<ProductImageDto> getProductImages(Long productId) {
+        findProduct(productId);
+        List<ProductImage> productImages = productImageRepository.findByProductId(productId);
+        return productImages.stream()
+                .map(productMapper::toProductImageDto)
+                .toList();
     }
 
     @Override

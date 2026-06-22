@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-carts-table
+      author: wojtek-a
+      changes:
+        - createTable:
+            tableName: carts
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+        - addForeignKeyConstraint:
+            baseTableName: carts
+            baseColumnNames: user_id
+            referencedTableName: users_table
+            referencedColumnNames: id
+            constraintName: fk_carts_users_table

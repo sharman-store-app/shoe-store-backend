@@ -30,6 +30,10 @@ public interface ProductService {
 
     ProductColorSizeResponseDto getProductByColorAndSize(Long id, String color, String size);
 
+    List<ProductVariantDto> getProductVariants(Long productId);
+
+    List<ProductImageDto> getProductImages(Long productId);
+
     ProductDto updateProduct(Long id, ProductUpdateRequestDto request);
 
     ProductVariantDto updateProductVariant(Long id, ProductVariantUpdateRequestDto request);
@@ -41,4 +45,5 @@ public interface ProductService {
     void deleteProductVariant(Long id);
 
     void deleteProductImage(Long id, String color);
+
 }

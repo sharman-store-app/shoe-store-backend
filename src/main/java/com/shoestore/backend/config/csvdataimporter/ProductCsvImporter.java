@@ -67,5 +67,11 @@ public class ProductCsvImporter implements CommandLineRunner {
         } catch (IOException e) {
             throw new RuntimeException("Failed to import products from CSV file");
         }
+        if (productRepository.findById(1L).isEmpty()) {
+            throw new IllegalStateException("""
+                    Product import is inconsistent.products.csv assumes products start with id=1.
+                    Reset the database or sequences before importing.
+                    """);
+        }
     }
 }

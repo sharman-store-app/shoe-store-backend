@@ -29,6 +29,7 @@ public interface ProductMapper {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "product", ignore = true)
+    @Mapping(target = "productImage", ignore = true)
     @Mapping(target = "deleted", ignore = true)
     ProductVariant toProductVariant(CreateProductVariantRequestDto request);
 
