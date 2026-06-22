@@ -11,6 +11,7 @@ public record CreateCartItemRequestDto(
         )
         Long cartId,
         @NotNull(message = "Product variant ID is required") Long productVariantId,
-        @NotNull(message = "Quantity is required") @Positive(message = "Quantity must be greater than zero") Integer quantity
+        @NotNull(message = "Quantity is required")
+        @Positive(message = "Quantity must be greater than zero") Integer quantity
 ) {
 }
