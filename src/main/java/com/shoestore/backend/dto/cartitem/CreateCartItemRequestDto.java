@@ -8,10 +8,10 @@ public record CreateCartItemRequestDto(
         @Schema(description = "Guest cart identifier. Provide the existing cartId when adding "
                 + "items to an existing guest cart. Leave null for the first item or for "
                 + "authenticated users."
-        )
-        Long cartId,
+        ) Long cartId,
         @NotNull(message = "Product variant ID is required") Long productVariantId,
-        @NotNull(message = "Quantity is required")
-        @Positive(message = "Quantity must be greater than zero") Integer quantity
+        @NotNull(message = QUANTITY_MESSAGE) @Positive(message = POSITIVE_MESSAGE) Integer quantity
 ) {
+    private static final String QUANTITY_MESSAGE = "Quantity is required";
+    private static final String POSITIVE_MESSAGE = "Quantity must be greater than zero";
 }
