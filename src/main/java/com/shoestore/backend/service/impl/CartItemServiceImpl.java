@@ -8,10 +8,12 @@ import com.shoestore.backend.exceptation.InsufficientStockException;
 import com.shoestore.backend.mapper.CartItemMapper;
 import com.shoestore.backend.model.Cart;
 import com.shoestore.backend.model.CartItem;
+import com.shoestore.backend.model.ProductImage;
 import com.shoestore.backend.model.ProductVariant;
 import com.shoestore.backend.model.User;
 import com.shoestore.backend.repository.CartItemRepository;
 import com.shoestore.backend.repository.CartRepository;
+import com.shoestore.backend.repository.ProductImageRepository;
 import com.shoestore.backend.repository.ProductVariantRepository;
 import com.shoestore.backend.repository.UserRepository;
 import com.shoestore.backend.service.CartItemService;
@@ -30,6 +32,7 @@ public class CartItemServiceImpl implements CartItemService {
 
     private final UserRepository userRepository;
     private final ProductVariantRepository productVariantRepository;
+    private final ProductImageRepository productImageRepository;
     private final CartRepository cartRepository;
     private final CartItemRepository cartItemRepository;
     private final CartItemMapper cartItemMapper;
@@ -106,7 +109,7 @@ public class CartItemServiceImpl implements CartItemService {
         BigDecimal cartSubtotal = BigDecimal.ZERO;
         for (CartItem item : cartItemList) {
             CartItemDto cartItemDto = cartItemMapper.toDto(item,
-                    getSubtotal(item.getProductVariant(), item.getQuantity()));
+                    getSubtotal(item.getProductVariant(), item.getQuantity()), getImage(item));
             cartItemDtoList.add(cartItemDto);
             productsCount++;
             BigDecimal itemSubtotal = item.getProductVariant().getProduct().getPrice()
@@ -119,5 +122,13 @@ public class CartItemServiceImpl implements CartItemService {
     private BigDecimal getSubtotal(ProductVariant productVariant, Integer quantity) {
         return productVariant.getProduct().getPrice()
                 .multiply(BigDecimal.valueOf(quantity));
+    }
+
+    private String getImage(CartItem cartItem) {
+        return productImageRepository.findByProductIdAndColor(
+                        cartItem.getProductVariant().getProduct().getId(),
+                        cartItem.getProductVariant().getColor())
+                .map(ProductImage::getMainUrl)
+                .orElse("");
     }
 }

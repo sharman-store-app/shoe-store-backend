@@ -10,6 +10,7 @@ public record CreateProductVariantRequestDto(
         @NotBlank
         String color,
         @Positive @NotNull Integer stockQty,
-        String sku
+        String sku,
+        @Positive Long productImageId
 ) {
 }

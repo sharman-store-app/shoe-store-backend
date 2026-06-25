@@ -7,7 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -42,10 +41,6 @@ public class ProductVariant {
 
     @Column(nullable = false, unique = true)
     private String sku;
-
-    @OneToOne
-    @JoinColumn(name = "product_image_id", nullable = false)
-    private ProductImage productImage;
 
     @Column(name = "is_deleted", nullable = false)
     private boolean isDeleted = false;

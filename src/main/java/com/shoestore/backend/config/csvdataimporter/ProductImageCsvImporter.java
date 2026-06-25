@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-@Order(2)
+@Order(3)
 public class ProductImageCsvImporter implements CommandLineRunner {
 
     private final ProductImageRepository productImageRepository;
