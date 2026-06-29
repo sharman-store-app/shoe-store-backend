@@ -63,19 +63,19 @@ public class GlobalExceptionHandler {
         body.put("error", HttpStatus.FORBIDDEN.getReasonPhrase());
         body.put("path", request.getRequestURI());
         body.put("message", "Invalid password");
-        return new ResponseEntity<>(body, HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(body, HttpStatus.FORBIDDEN);
     }
 
     @ExceptionHandler(InsufficientStockException.class)
     public ResponseEntity<Object> insufficientStockException(
-            HttpServletRequest request, InvalidPasswordException ex) {
+            HttpServletRequest request, InsufficientStockException ex) {
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", OffsetDateTime.now());
         body.put("status", HttpStatus.CONFLICT.value());
         body.put("error", HttpStatus.CONFLICT.getReasonPhrase());
         body.put("path", request.getRequestURI());
         body.put("message", "Out of stock");
-        return new ResponseEntity<>(body, HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(body, HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(value = {Exception.class})

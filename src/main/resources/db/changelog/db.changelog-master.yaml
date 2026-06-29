@@ -27,5 +27,8 @@ databaseChangeLog:
       file: 09-create-cart-items-table.yaml
       relativeToChangelogFile: true
   - include:
+      file: 10-add-last-activity-at-to-cart.yaml
+      relativeToChangelogFile: true
+  - include:
       file: 99-inserts-to-tables.yaml
       relativeToChangelogFile: true

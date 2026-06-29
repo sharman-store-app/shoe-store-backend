@@ -19,6 +19,7 @@ import com.shoestore.backend.repository.UserRepository;
 import com.shoestore.backend.service.CartItemService;
 import jakarta.persistence.EntityNotFoundException;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -68,6 +69,7 @@ public class CartItemServiceImpl implements CartItemService {
             throw new InsufficientStockException("Only " + productVariant.getStockQty()
                     + " items are available in stock.");
         }
+        setCartActivity(cart);
         cartItemRepository.save(cartItem);
         return getResponse(cart.getId());
     }
@@ -93,6 +95,7 @@ public class CartItemServiceImpl implements CartItemService {
         CartItem cartItem = findCartItem(id);
         Long cartId = cartItem.getCart().getId();
         cartItemRepository.delete(cartItem);
+        setCartActivity(cartItem.getCart());
         return getResponse(cartId);
     }
 
@@ -130,5 +133,9 @@ public class CartItemServiceImpl implements CartItemService {
                         cartItem.getProductVariant().getColor())
                 .map(ProductImage::getMainUrl)
                 .orElse("");
+    }
+
+    private void setCartActivity(Cart cart) {
+        cart.setLastActivityAt(LocalDateTime.now());
     }
 }

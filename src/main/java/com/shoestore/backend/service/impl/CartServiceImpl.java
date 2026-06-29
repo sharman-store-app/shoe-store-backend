@@ -20,6 +20,7 @@ import com.shoestore.backend.repository.UserRepository;
 import com.shoestore.backend.service.CartService;
 import jakarta.persistence.EntityNotFoundException;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -43,6 +44,7 @@ public class CartServiceImpl implements CartService {
     public CartResponseDto getCart(Long id) {
         Cart cart = cartRepository.findById(id).orElseThrow(() ->
                 new EntityNotFoundException("Cart with id " + id + " wasn't found in database"));
+        setCartActivity(cart);
         return getResponse(cart.getId());
     }
 
@@ -78,6 +80,7 @@ public class CartServiceImpl implements CartService {
                     + " items are available in stock.");
         }
         cartItemRepository.save(cartItem);
+        setCartActivity(cart);
         return getResponse(cart.getId());
     }
 
@@ -92,6 +95,7 @@ public class CartServiceImpl implements CartService {
                     + " items are available in stock.");
         }
         cartItem.setQuantity(request.quantity());
+        setCartActivity(cartItem.getCart());
         return getResponse(cartId);
     }
 
@@ -100,6 +104,7 @@ public class CartServiceImpl implements CartService {
     public CartResponseDto deleteCartItem(Long cartId, Long cartItemId) {
         CartItem cartItem = getCartItem(cartId, cartItemId);
         cartItemRepository.delete(cartItem);
+        setCartActivity(cartItem.getCart());
         return getResponse(cartId);
     }
 
@@ -144,6 +149,7 @@ public class CartServiceImpl implements CartService {
             }
         }
         cartRepository.delete(guestCart);
+        setCartActivity(userCart);
         return getResponse(userCart.getId());
     }
 
@@ -186,5 +192,9 @@ public class CartServiceImpl implements CartService {
                         cartItem.getProductVariant().getColor())
                 .map(ProductImage::getMainUrl)
                 .orElse("");
+    }
+
+    private void setCartActivity(Cart cart) {
+        cart.setLastActivityAt(LocalDateTime.now());
     }
 }
