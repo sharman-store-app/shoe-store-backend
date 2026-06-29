@@ -74,10 +74,9 @@ public class ProductServiceImpl implements ProductService {
     public ProductImageDto createProductImage(Long productId,
                                               CreateProductImageRequestDto request) {
         Product product = findProduct(productId);
-        if (productImageRepository.existsByColorAndMainUrl(request.color(),
-                request.mainUrl())) {
-            throw new EntityAlreadyExistsException("Image with given color and main url "
-                    + "already exists in database");
+        if (productImageRepository.existsByProductIdAndColor(productId, request.color())) {
+            throw new EntityAlreadyExistsException("Image with given product id " + productId
+                    + " and color " + request.color() + " already exists in database");
         }
         ProductImage productImage = productMapper.toProductImage(request);
         productImage.setProduct(product);
