@@ -28,5 +28,5 @@ public class Cart {
     private User user;
 
     @Column(name = "last_activity_at")
-    private LocalDateTime lastActivityAt  = LocalDateTime.now();
+    private LocalDateTime lastActivityAt = LocalDateTime.now();
 }
