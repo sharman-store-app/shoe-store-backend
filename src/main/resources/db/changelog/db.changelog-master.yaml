@@ -36,5 +36,8 @@ databaseChangeLog:
       file: 12-create-order-items-table.yaml
       relativeToChangelogFile: true
   - include:
+      file: 13-create-sessions-table.yaml
+      relativeToChangelogFile: true
+  - include:
       file: 99-inserts-to-tables.yaml
       relativeToChangelogFile: true

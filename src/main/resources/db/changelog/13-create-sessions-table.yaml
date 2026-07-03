@@ -1,0 +1,49 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-sessions-table
+      author: wojtek-a
+      changes:
+        - createTable:
+            tableName: sessions
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+              - column:
+                  name: device_type
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: browser
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: country
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: channel
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: sessions
+            baseColumnNames: user_id
+            referencedTableName: users_table
+            referencedColumnNames: id
+            constraintName: fk_sessions_users
