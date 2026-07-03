@@ -1,0 +1,76 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-orders-table
+      author: wojtek-a
+      changes:
+        - createTable:
+            tableName: orders
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+              - column:
+                  name: status
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: total_amount
+                  type: decimal(10,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: customer_first_name
+                  type: varchar(255)
+              - column:
+                  name: customer_last_name
+                  type: varchar(255)
+              - column:
+                  name: customer_phone
+                  type: varchar(255)
+              - column:
+                  name: customer_email
+                  type: varchar(255)
+              - column:
+                  name: delivery_address
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: recipient_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: recipient_phone
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: delivery_type
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: payment_type
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: orders
+            baseColumnNames: user_id
+            referencedTableName: users_table
+            referencedColumnNames: id
+            constraintName: fk_users_orders

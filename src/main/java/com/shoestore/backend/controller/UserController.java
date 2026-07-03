@@ -27,7 +27,7 @@ public class UserController {
     @Operation(summary = "Get logged in user info",
             description = "Get current user information")
     @PreAuthorize("hasAnyRole('ADMIN', 'CUSTOMER')")
-    UserResponseDto getUserData(Authentication authentication) {
+    public UserResponseDto getUserData(Authentication authentication) {
         String userEmail = authentication.getName();
         return userService.getCurrentUserData(userEmail);
     }
@@ -36,7 +36,7 @@ public class UserController {
     @Operation(summary = "Update logged in user info",
             description = "Update current user information")
     @PreAuthorize("hasAnyRole('ADMIN', 'CUSTOMER')")
-    UserResponseDto updateUserData(Authentication authentication,
+    public UserResponseDto updateUserData(Authentication authentication,
                                    @RequestBody @Valid UserUpdateRequestDto request) {
         String userEmail = authentication.getName();
         return userService.updateUserData(request, userEmail);

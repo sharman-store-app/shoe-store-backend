@@ -43,7 +43,7 @@ public class ProductController {
     @Operation(summary = "Create product",
             description = "Creates a new product. Accessible only to ADMIN users.")
     @PreAuthorize("hasRole('ADMIN')")
-    ProductDto createProduct(@RequestBody @Valid CreateProductRequestDto request) {
+    public ProductDto createProduct(@RequestBody @Valid CreateProductRequestDto request) {
         return productService.createProduct(request);
     }
 
@@ -51,7 +51,7 @@ public class ProductController {
     @Operation(summary = "Create product variant",
             description = "Creates a new product variant. Accessible only to ADMIN users.")
     @PreAuthorize("hasRole('ADMIN')")
-    ProductVariantDto createProductVariant(@PathVariable Long productId,
+    public ProductVariantDto createProductVariant(@PathVariable Long productId,
                                            @RequestBody @Valid
                                            CreateProductVariantRequestDto request) {
         return productService.createProductVariant(productId, request);
@@ -61,7 +61,7 @@ public class ProductController {
     @Operation(summary = "Create product images",
             description = "Creates a new product image. Accessible only to ADMIN users.")
     @PreAuthorize("hasRole('ADMIN')")
-    ProductImageDto createProductImage(@PathVariable Long productId,
+    public ProductImageDto createProductImage(@PathVariable Long productId,
                                        @RequestBody @Valid
                                        CreateProductImageRequestDto request) {
         return productService.createProductImage(productId, request);
@@ -69,27 +69,28 @@ public class ProductController {
 
     @GetMapping
     @Operation(summary = "Get products", description = "Get information about all products")
-    List<ProductResponseDto> getAllProducts() {
+    public List<ProductResponseDto> getAllProducts() {
         return productService.getAllProducts();
     }
 
     @GetMapping("/{id}")
     @Operation(summary = "Get product", description = "Get information about product")
-    ProductResponseDto getProduct(@PathVariable Long id) {
+    public ProductResponseDto getProduct(@PathVariable Long id) {
         return productService.getProduct(id);
     }
 
     @GetMapping(value = "/{id}", params = "color")
     @Operation(summary = "Get product by id and color",
             description = "Get product information for the selected color.")
-    ProductColorResponseDto getProductByColor(@PathVariable Long id, @RequestParam String color) {
+    public ProductColorResponseDto getProductByColor(@PathVariable Long id,
+                                                     @RequestParam String color) {
         return productService.getProductByColor(id, color);
     }
 
     @GetMapping(value = "/{id}", params = {"color", "size"})
     @Operation(summary = "Get product by id, color and size",
             description = "Get product information for the selected color and size.")
-    ProductColorSizeResponseDto getProductByColor(@PathVariable Long id,
+    public ProductColorSizeResponseDto getProductByColor(@PathVariable Long id,
                                                   @RequestParam String color,
                                                   @RequestParam String size) {
         return productService.getProductByColorAndSize(id, color, size);
@@ -111,7 +112,7 @@ public class ProductController {
     @Operation(summary = "Update product",
             description = "Updates a product. Accessible only to ADMIN users.")
     @PreAuthorize("hasRole('ADMIN')")
-    ProductDto updateProduct(@PathVariable Long id,
+    public ProductDto updateProduct(@PathVariable Long id,
                              @RequestBody ProductUpdateRequestDto request) {
         return productService.updateProduct(id, request);
     }
@@ -120,7 +121,7 @@ public class ProductController {
     @Operation(summary = "Update product variant",
             description = "Updates a product variant. Accessible only to ADMIN users.")
     @PreAuthorize("hasRole('ADMIN')")
-    ProductVariantDto updateProductVariant(@PathVariable Long id,
+    public ProductVariantDto updateProductVariant(@PathVariable Long id,
                                            @RequestBody ProductVariantUpdateRequestDto request) {
         return productService.updateProductVariant(id, request);
     }
@@ -129,7 +130,7 @@ public class ProductController {
     @Operation(summary = "Update product image",
             description = "Updates a product image. Accessible only to ADMIN users.")
     @PreAuthorize("hasRole('ADMIN')")
-    ProductImageDto updateProductImage(@PathVariable Long id, @PathVariable String color,
+    public ProductImageDto updateProductImage(@PathVariable Long id, @PathVariable String color,
                                        @RequestBody ProductImageUpdateRequestDto request) {
         return productService.updateProductImage(id, color, request);
     }
@@ -139,7 +140,7 @@ public class ProductController {
             + "Accessible only to ADMIN users.")
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    void deleteProduct(@PathVariable Long id) {
+    public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
     }
 
@@ -148,7 +149,7 @@ public class ProductController {
             + "Accessible only to ADMIN users.")
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    void deleteProductVariant(@PathVariable Long id) {
+    public void deleteProductVariant(@PathVariable Long id) {
         productService.deleteProductVariant(id);
     }
 
@@ -157,7 +158,7 @@ public class ProductController {
             + "Accessible only to ADMIN users.")
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    void deleteProductImage(@PathVariable Long id, @PathVariable String color) {
+    public void deleteProductImage(@PathVariable Long id, @PathVariable String color) {
         productService.deleteProductImage(id, color);
     }
 }

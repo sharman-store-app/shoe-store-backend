@@ -78,6 +78,42 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(body, HttpStatus.CONFLICT);
     }
 
+    @ExceptionHandler(InvalidCustomerException.class)
+    public ResponseEntity<Object> invalidCustomerException(
+            HttpServletRequest request, InvalidCustomerException ex) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", OffsetDateTime.now());
+        body.put("status", HttpStatus.FORBIDDEN.value());
+        body.put("error", HttpStatus.FORBIDDEN.getReasonPhrase());
+        body.put("path", request.getRequestURI());
+        body.put("message", "Invalid user data");
+        return new ResponseEntity<>(body, HttpStatus.FORBIDDEN);
+    }
+
+    @ExceptionHandler(EmptyCartException.class)
+    public ResponseEntity<Object> emptyCartExpectation(
+            HttpServletRequest request, EmptyCartException ex) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", OffsetDateTime.now());
+        body.put("status", HttpStatus.CONFLICT.value());
+        body.put("error", HttpStatus.CONFLICT.getReasonPhrase());
+        body.put("path", request.getRequestURI());
+        body.put("message", "Empty cart");
+        return new ResponseEntity<>(body, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(OutOfStockException.class)
+    public ResponseEntity<Object> outOfStockException(
+            HttpServletRequest request, OutOfStockException ex) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", OffsetDateTime.now());
+        body.put("status", HttpStatus.CONFLICT.value());
+        body.put("error", HttpStatus.CONFLICT.getReasonPhrase());
+        body.put("path", request.getRequestURI());
+        body.put("message", "Product is out of stock");
+        return new ResponseEntity<>(body, HttpStatus.CONFLICT);
+    }
+
     @ExceptionHandler(value = {Exception.class})
     public ResponseEntity<Object> handleAllExceptions(HttpServletRequest request, Exception ex) {
         Map<String, Object> body = new LinkedHashMap<>();

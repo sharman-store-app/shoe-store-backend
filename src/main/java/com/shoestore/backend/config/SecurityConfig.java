@@ -70,7 +70,8 @@ public class SecurityConfig {
                                         "/index.html",
                                         "/oauth2/**",
                                         "/favicon.ico",
-                                        "/api/carts/**"
+                                        "/api/carts/**",
+                                        "/api/orders/**"
                                 )
                                 .permitAll()
                                 .anyRequest()
