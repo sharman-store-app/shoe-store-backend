@@ -40,11 +40,14 @@ public class SessionServiceImpl implements SessionService {
         String browser = "Unknown";
         DeviceType deviceType = DeviceType.DESKTOP;
         if (userAgent != null) {
-            if (userAgent.contains("Edg")) {
+            if (userAgent.contains("Edg")
+                    || userAgent.contains("EdgiOS")) {
                 browser = "Edge";
-            } else if (userAgent.contains("Chrome")) {
+            } else if (userAgent.contains("Chrome")
+                    || userAgent.contains("CriOS")) {
                 browser = "Chrome";
-            } else if (userAgent.contains("Firefox")) {
+            } else if (userAgent.contains("Firefox")
+                    || userAgent.contains("FxiOS")) {
                 browser = "Firefox";
             } else if (userAgent.contains("Safari")) {
                 browser = "Safari";
