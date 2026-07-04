@@ -1,0 +1,2246 @@
+databaseChangeLog:
+  - changeSet:
+      id: inserts-to-table-countries
+      author: wojtek-a
+      changes:
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: AF
+              - column:
+                  name: name
+                  value: "Afghanistan"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: AX
+              - column:
+                  name: name
+                  value: "Åland Islands"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: AL
+              - column:
+                  name: name
+                  value: "Albania"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: DZ
+              - column:
+                  name: name
+                  value: "Algeria"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: AS
+              - column:
+                  name: name
+                  value: "American Samoa"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: AD
+              - column:
+                  name: name
+                  value: "Andorra"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: AO
+              - column:
+                  name: name
+                  value: "Angola"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: AI
+              - column:
+                  name: name
+                  value: "Anguilla"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: AQ
+              - column:
+                  name: name
+                  value: "Antarctica"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: AG
+              - column:
+                  name: name
+                  value: "Antigua and Barbuda"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: AR
+              - column:
+                  name: name
+                  value: "Argentina"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: AM
+              - column:
+                  name: name
+                  value: "Armenia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: AW
+              - column:
+                  name: name
+                  value: "Aruba"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: AU
+              - column:
+                  name: name
+                  value: "Australia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: AT
+              - column:
+                  name: name
+                  value: "Austria"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: AZ
+              - column:
+                  name: name
+                  value: "Azerbaijan"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BS
+              - column:
+                  name: name
+                  value: "Bahamas"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BH
+              - column:
+                  name: name
+                  value: "Bahrain"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BD
+              - column:
+                  name: name
+                  value: "Bangladesh"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BB
+              - column:
+                  name: name
+                  value: "Barbados"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BY
+              - column:
+                  name: name
+                  value: "Belarus"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BE
+              - column:
+                  name: name
+                  value: "Belgium"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BZ
+              - column:
+                  name: name
+                  value: "Belize"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BJ
+              - column:
+                  name: name
+                  value: "Benin"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BM
+              - column:
+                  name: name
+                  value: "Bermuda"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BT
+              - column:
+                  name: name
+                  value: "Bhutan"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BO
+              - column:
+                  name: name
+                  value: "Bolivia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BQ
+              - column:
+                  name: name
+                  value: "Bonaire, Sint Eustatius and Saba"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BA
+              - column:
+                  name: name
+                  value: "Bosnia and Herzegovina"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BW
+              - column:
+                  name: name
+                  value: "Botswana"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BV
+              - column:
+                  name: name
+                  value: "Bouvet Island"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BR
+              - column:
+                  name: name
+                  value: "Brazil"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: IO
+              - column:
+                  name: name
+                  value: "British Indian Ocean Territory"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BN
+              - column:
+                  name: name
+                  value: "Brunei Darussalam"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BG
+              - column:
+                  name: name
+                  value: "Bulgaria"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BF
+              - column:
+                  name: name
+                  value: "Burkina Faso"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BI
+              - column:
+                  name: name
+                  value: "Burundi"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: CV
+              - column:
+                  name: name
+                  value: "Cabo Verde"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: KH
+              - column:
+                  name: name
+                  value: "Cambodia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: CM
+              - column:
+                  name: name
+                  value: "Cameroon"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: CA
+              - column:
+                  name: name
+                  value: "Canada"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: KY
+              - column:
+                  name: name
+                  value: "Cayman Islands"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: CF
+              - column:
+                  name: name
+                  value: "Central African Republic"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: TD
+              - column:
+                  name: name
+                  value: "Chad"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: CL
+              - column:
+                  name: name
+                  value: "Chile"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: CN
+              - column:
+                  name: name
+                  value: "China"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: CX
+              - column:
+                  name: name
+                  value: "Christmas Island"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: CC
+              - column:
+                  name: name
+                  value: "Cocos (Keeling) Islands"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: CO
+              - column:
+                  name: name
+                  value: "Colombia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: KM
+              - column:
+                  name: name
+                  value: "Comoros"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: CG
+              - column:
+                  name: name
+                  value: "Congo"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: CD
+              - column:
+                  name: name
+                  value: "Congo, Democratic Republic of the"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: CK
+              - column:
+                  name: name
+                  value: "Cook Islands"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: CR
+              - column:
+                  name: name
+                  value: "Costa Rica"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: CI
+              - column:
+                  name: name
+                  value: "Côte d'Ivoire"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: HR
+              - column:
+                  name: name
+                  value: "Croatia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: CU
+              - column:
+                  name: name
+                  value: "Cuba"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: CW
+              - column:
+                  name: name
+                  value: "Curaçao"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: CY
+              - column:
+                  name: name
+                  value: "Cyprus"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: CZ
+              - column:
+                  name: name
+                  value: "Czechia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: DK
+              - column:
+                  name: name
+                  value: "Denmark"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: DJ
+              - column:
+                  name: name
+                  value: "Djibouti"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: DM
+              - column:
+                  name: name
+                  value: "Dominica"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: DO
+              - column:
+                  name: name
+                  value: "Dominican Republic"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: EC
+              - column:
+                  name: name
+                  value: "Ecuador"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: EG
+              - column:
+                  name: name
+                  value: "Egypt"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SV
+              - column:
+                  name: name
+                  value: "El Salvador"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: GQ
+              - column:
+                  name: name
+                  value: "Equatorial Guinea"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: ER
+              - column:
+                  name: name
+                  value: "Eritrea"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: EE
+              - column:
+                  name: name
+                  value: "Estonia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SZ
+              - column:
+                  name: name
+                  value: "Eswatini"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: ET
+              - column:
+                  name: name
+                  value: "Ethiopia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: FK
+              - column:
+                  name: name
+                  value: "Falkland Islands"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: FO
+              - column:
+                  name: name
+                  value: "Faroe Islands"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: FJ
+              - column:
+                  name: name
+                  value: "Fiji"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: FI
+              - column:
+                  name: name
+                  value: "Finland"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: FR
+              - column:
+                  name: name
+                  value: "France"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: GF
+              - column:
+                  name: name
+                  value: "French Guiana"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: PF
+              - column:
+                  name: name
+                  value: "French Polynesia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: TF
+              - column:
+                  name: name
+                  value: "French Southern Territories"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: GA
+              - column:
+                  name: name
+                  value: "Gabon"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: GM
+              - column:
+                  name: name
+                  value: "Gambia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: GE
+              - column:
+                  name: name
+                  value: "Georgia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: DE
+              - column:
+                  name: name
+                  value: "Germany"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: GH
+              - column:
+                  name: name
+                  value: "Ghana"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: GI
+              - column:
+                  name: name
+                  value: "Gibraltar"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: GR
+              - column:
+                  name: name
+                  value: "Greece"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: GL
+              - column:
+                  name: name
+                  value: "Greenland"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: GD
+              - column:
+                  name: name
+                  value: "Grenada"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: GP
+              - column:
+                  name: name
+                  value: "Guadeloupe"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: GU
+              - column:
+                  name: name
+                  value: "Guam"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: GT
+              - column:
+                  name: name
+                  value: "Guatemala"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: GG
+              - column:
+                  name: name
+                  value: "Guernsey"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: GN
+              - column:
+                  name: name
+                  value: "Guinea"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: GW
+              - column:
+                  name: name
+                  value: "Guinea-Bissau"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: GY
+              - column:
+                  name: name
+                  value: "Guyana"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: HT
+              - column:
+                  name: name
+                  value: "Haiti"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: HM
+              - column:
+                  name: name
+                  value: "Heard Island and McDonald Islands"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: VA
+              - column:
+                  name: name
+                  value: "Holy See"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: HN
+              - column:
+                  name: name
+                  value: "Honduras"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: HK
+              - column:
+                  name: name
+                  value: "Hong Kong"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: HU
+              - column:
+                  name: name
+                  value: "Hungary"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: IS
+              - column:
+                  name: name
+                  value: "Iceland"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: IN
+              - column:
+                  name: name
+                  value: "India"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: ID
+              - column:
+                  name: name
+                  value: "Indonesia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: IR
+              - column:
+                  name: name
+                  value: "Iran"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: IQ
+              - column:
+                  name: name
+                  value: "Iraq"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: IE
+              - column:
+                  name: name
+                  value: "Ireland"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: IM
+              - column:
+                  name: name
+                  value: "Isle of Man"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: IL
+              - column:
+                  name: name
+                  value: "Israel"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: IT
+              - column:
+                  name: name
+                  value: "Italy"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: JM
+              - column:
+                  name: name
+                  value: "Jamaica"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: JP
+              - column:
+                  name: name
+                  value: "Japan"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: JE
+              - column:
+                  name: name
+                  value: "Jersey"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: JO
+              - column:
+                  name: name
+                  value: "Jordan"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: KZ
+              - column:
+                  name: name
+                  value: "Kazakhstan"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: KE
+              - column:
+                  name: name
+                  value: "Kenya"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: KI
+              - column:
+                  name: name
+                  value: "Kiribati"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: KP
+              - column:
+                  name: name
+                  value: "Korea (Democratic People's Republic of)"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: KR
+              - column:
+                  name: name
+                  value: "Korea, Republic of"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: KW
+              - column:
+                  name: name
+                  value: "Kuwait"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: KG
+              - column:
+                  name: name
+                  value: "Kyrgyzstan"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: LA
+              - column:
+                  name: name
+                  value: "Lao People's Democratic Republic"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: LV
+              - column:
+                  name: name
+                  value: "Latvia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: LB
+              - column:
+                  name: name
+                  value: "Lebanon"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: LS
+              - column:
+                  name: name
+                  value: "Lesotho"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: LR
+              - column:
+                  name: name
+                  value: "Liberia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: LY
+              - column:
+                  name: name
+                  value: "Libya"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: LI
+              - column:
+                  name: name
+                  value: "Liechtenstein"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: LT
+              - column:
+                  name: name
+                  value: "Lithuania"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: LU
+              - column:
+                  name: name
+                  value: "Luxembourg"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MO
+              - column:
+                  name: name
+                  value: "Macao"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MG
+              - column:
+                  name: name
+                  value: "Madagascar"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MW
+              - column:
+                  name: name
+                  value: "Malawi"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MY
+              - column:
+                  name: name
+                  value: "Malaysia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MV
+              - column:
+                  name: name
+                  value: "Maldives"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: ML
+              - column:
+                  name: name
+                  value: "Mali"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MT
+              - column:
+                  name: name
+                  value: "Malta"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MH
+              - column:
+                  name: name
+                  value: "Marshall Islands"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MQ
+              - column:
+                  name: name
+                  value: "Martinique"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MR
+              - column:
+                  name: name
+                  value: "Mauritania"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MU
+              - column:
+                  name: name
+                  value: "Mauritius"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: YT
+              - column:
+                  name: name
+                  value: "Mayotte"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MX
+              - column:
+                  name: name
+                  value: "Mexico"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: FM
+              - column:
+                  name: name
+                  value: "Micronesia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MD
+              - column:
+                  name: name
+                  value: "Moldova"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MC
+              - column:
+                  name: name
+                  value: "Monaco"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MN
+              - column:
+                  name: name
+                  value: "Mongolia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: ME
+              - column:
+                  name: name
+                  value: "Montenegro"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MS
+              - column:
+                  name: name
+                  value: "Montserrat"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MA
+              - column:
+                  name: name
+                  value: "Morocco"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MZ
+              - column:
+                  name: name
+                  value: "Mozambique"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MM
+              - column:
+                  name: name
+                  value: "Myanmar"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: NA
+              - column:
+                  name: name
+                  value: "Namibia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: NR
+              - column:
+                  name: name
+                  value: "Nauru"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: NP
+              - column:
+                  name: name
+                  value: "Nepal"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: NL
+              - column:
+                  name: name
+                  value: "Netherlands"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: NC
+              - column:
+                  name: name
+                  value: "New Caledonia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: NZ
+              - column:
+                  name: name
+                  value: "New Zealand"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: NI
+              - column:
+                  name: name
+                  value: "Nicaragua"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: NE
+              - column:
+                  name: name
+                  value: "Niger"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: NG
+              - column:
+                  name: name
+                  value: "Nigeria"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: NU
+              - column:
+                  name: name
+                  value: "Niue"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: NF
+              - column:
+                  name: name
+                  value: "Norfolk Island"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MK
+              - column:
+                  name: name
+                  value: "North Macedonia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MP
+              - column:
+                  name: name
+                  value: "Northern Mariana Islands"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: NO
+              - column:
+                  name: name
+                  value: "Norway"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: OM
+              - column:
+                  name: name
+                  value: "Oman"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: PK
+              - column:
+                  name: name
+                  value: "Pakistan"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: PW
+              - column:
+                  name: name
+                  value: "Palau"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: PS
+              - column:
+                  name: name
+                  value: "Palestine, State of"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: PA
+              - column:
+                  name: name
+                  value: "Panama"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: PG
+              - column:
+                  name: name
+                  value: "Papua New Guinea"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: PY
+              - column:
+                  name: name
+                  value: "Paraguay"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: PE
+              - column:
+                  name: name
+                  value: "Peru"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: PH
+              - column:
+                  name: name
+                  value: "Philippines"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: PN
+              - column:
+                  name: name
+                  value: "Pitcairn"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: PL
+              - column:
+                  name: name
+                  value: "Poland"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: PT
+              - column:
+                  name: name
+                  value: "Portugal"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: PR
+              - column:
+                  name: name
+                  value: "Puerto Rico"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: QA
+              - column:
+                  name: name
+                  value: "Qatar"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: RE
+              - column:
+                  name: name
+                  value: "Réunion"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: RO
+              - column:
+                  name: name
+                  value: "Romania"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: RU
+              - column:
+                  name: name
+                  value: "Russian Federation"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: RW
+              - column:
+                  name: name
+                  value: "Rwanda"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: BL
+              - column:
+                  name: name
+                  value: "Saint Barthélemy"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SH
+              - column:
+                  name: name
+                  value: "Saint Helena, Ascension and Tristan da Cunha"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: KN
+              - column:
+                  name: name
+                  value: "Saint Kitts and Nevis"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: LC
+              - column:
+                  name: name
+                  value: "Saint Lucia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: MF
+              - column:
+                  name: name
+                  value: "Saint Martin (French part)"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: PM
+              - column:
+                  name: name
+                  value: "Saint Pierre and Miquelon"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: VC
+              - column:
+                  name: name
+                  value: "Saint Vincent and the Grenadines"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: WS
+              - column:
+                  name: name
+                  value: "Samoa"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SM
+              - column:
+                  name: name
+                  value: "San Marino"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: ST
+              - column:
+                  name: name
+                  value: "Sao Tome and Principe"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SA
+              - column:
+                  name: name
+                  value: "Saudi Arabia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SN
+              - column:
+                  name: name
+                  value: "Senegal"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: RS
+              - column:
+                  name: name
+                  value: "Serbia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SC
+              - column:
+                  name: name
+                  value: "Seychelles"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SL
+              - column:
+                  name: name
+                  value: "Sierra Leone"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SG
+              - column:
+                  name: name
+                  value: "Singapore"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SX
+              - column:
+                  name: name
+                  value: "Sint Maarten (Dutch part)"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SK
+              - column:
+                  name: name
+                  value: "Slovakia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SI
+              - column:
+                  name: name
+                  value: "Slovenia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SB
+              - column:
+                  name: name
+                  value: "Solomon Islands"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SO
+              - column:
+                  name: name
+                  value: "Somalia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: ZA
+              - column:
+                  name: name
+                  value: "South Africa"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: GS
+              - column:
+                  name: name
+                  value: "South Georgia and the South Sandwich Islands"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SS
+              - column:
+                  name: name
+                  value: "South Sudan"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: ES
+              - column:
+                  name: name
+                  value: "Spain"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: LK
+              - column:
+                  name: name
+                  value: "Sri Lanka"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SD
+              - column:
+                  name: name
+                  value: "Sudan"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SR
+              - column:
+                  name: name
+                  value: "Suriname"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SJ
+              - column:
+                  name: name
+                  value: "Svalbard and Jan Mayen"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SE
+              - column:
+                  name: name
+                  value: "Sweden"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: CH
+              - column:
+                  name: name
+                  value: "Switzerland"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: SY
+              - column:
+                  name: name
+                  value: "Syrian Arab Republic"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: TW
+              - column:
+                  name: name
+                  value: "Taiwan"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: TJ
+              - column:
+                  name: name
+                  value: "Tajikistan"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: TZ
+              - column:
+                  name: name
+                  value: "Tanzania"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: TH
+              - column:
+                  name: name
+                  value: "Thailand"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: TL
+              - column:
+                  name: name
+                  value: "Timor-Leste"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: TG
+              - column:
+                  name: name
+                  value: "Togo"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: TK
+              - column:
+                  name: name
+                  value: "Tokelau"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: TO
+              - column:
+                  name: name
+                  value: "Tonga"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: TT
+              - column:
+                  name: name
+                  value: "Trinidad and Tobago"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: TN
+              - column:
+                  name: name
+                  value: "Tunisia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: TR
+              - column:
+                  name: name
+                  value: "Türkiye"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: TM
+              - column:
+                  name: name
+                  value: "Turkmenistan"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: TC
+              - column:
+                  name: name
+                  value: "Turks and Caicos Islands"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: TV
+              - column:
+                  name: name
+                  value: "Tuvalu"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: UG
+              - column:
+                  name: name
+                  value: "Uganda"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: UA
+              - column:
+                  name: name
+                  value: "Ukraine"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: AE
+              - column:
+                  name: name
+                  value: "United Arab Emirates"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: GB
+              - column:
+                  name: name
+                  value: "United Kingdom"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: US
+              - column:
+                  name: name
+                  value: "United States"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: UM
+              - column:
+                  name: name
+                  value: "United States Minor Outlying Islands"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: UY
+              - column:
+                  name: name
+                  value: "Uruguay"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: UZ
+              - column:
+                  name: name
+                  value: "Uzbekistan"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: VU
+              - column:
+                  name: name
+                  value: "Vanuatu"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: VE
+              - column:
+                  name: name
+                  value: "Venezuela"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: VN
+              - column:
+                  name: name
+                  value: "Viet Nam"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: VG
+              - column:
+                  name: name
+                  value: "Virgin Islands (British)"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: VI
+              - column:
+                  name: name
+                  value: "Virgin Islands (U.S.)"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: WF
+              - column:
+                  name: name
+                  value: "Wallis and Futuna"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: EH
+              - column:
+                  name: name
+                  value: "Western Sahara"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: YE
+              - column:
+                  name: name
+                  value: "Yemen"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: ZM
+              - column:
+                  name: name
+                  value: "Zambia"
+        - insert:
+            tableName: countries
+            columns:
+              - column:
+                  name: code
+                  value: ZW
+              - column:
+                  name: name
+                  value: "Zimbabwe"

@@ -2,9 +2,11 @@ package com.shoestore.backend.service.impl;
 
 import com.shoestore.backend.dto.session.SessionRequestDto;
 import com.shoestore.backend.model.Channel;
+import com.shoestore.backend.model.Country;
 import com.shoestore.backend.model.DeviceType;
 import com.shoestore.backend.model.Session;
 import com.shoestore.backend.model.User;
+import com.shoestore.backend.repository.CountryRepository;
 import com.shoestore.backend.repository.SessionRepository;
 import com.shoestore.backend.repository.UserRepository;
 import com.shoestore.backend.service.SessionService;
@@ -23,6 +25,7 @@ public class SessionServiceImpl implements SessionService {
 
     private final UserRepository userRepository;
     private final SessionRepository sessionRepository;
+    private final CountryRepository countryRepository;
 
     @Override
     @Transactional
@@ -82,10 +85,12 @@ public class SessionServiceImpl implements SessionService {
             }
         }
 
-        String country = "Unknown";
+        Country country = countryRepository.findById(request.countryCode()).orElseThrow(
+                () -> new EntityNotFoundException("Country code " + request.countryCode()
+                        + " doesn't exist in database"));
 
         Session session = new Session().setUser(user).setBrowser(browser)
-                .setDeviceType(deviceType).setChannel(channel).setCountry(country);
+                .setDeviceType(deviceType).setChannel(channel).setCountry(country.getName());
 
         sessionRepository.save(session);
     }
