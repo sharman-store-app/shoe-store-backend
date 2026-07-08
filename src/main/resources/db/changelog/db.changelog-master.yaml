@@ -45,5 +45,8 @@ databaseChangeLog:
       file: 15-inserts-to-table-countries.yaml
       relativeToChangelogFile: true
   - include:
+      file: 16-create-payments-table.yaml
+      relativeToChangelogFile: true
+  - include:
       file: 99-inserts-to-tables.yaml
       relativeToChangelogFile: true

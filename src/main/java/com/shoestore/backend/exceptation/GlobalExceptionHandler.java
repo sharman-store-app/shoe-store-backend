@@ -114,6 +114,18 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(body, HttpStatus.CONFLICT);
     }
 
+    @ExceptionHandler(PaymentException.class)
+    public ResponseEntity<Object> paymentException(
+            HttpServletRequest request, PaymentException ex) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", OffsetDateTime.now());
+        body.put("status", HttpStatus.CONFLICT.value());
+        body.put("error", HttpStatus.CONFLICT.getReasonPhrase());
+        body.put("path", request.getRequestURI());
+        body.put("message", "Payment ...");
+        return new ResponseEntity<>(body, HttpStatus.CONFLICT);
+    }
+
     @ExceptionHandler(value = {Exception.class})
     public ResponseEntity<Object> handleAllExceptions(HttpServletRequest request, Exception ex) {
         Map<String, Object> body = new LinkedHashMap<>();
