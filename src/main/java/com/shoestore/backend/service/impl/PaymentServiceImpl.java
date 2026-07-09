@@ -1,7 +1,6 @@
 package com.shoestore.backend.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shoestore.backend.dto.payment.CreatePaymentRequestDto;
@@ -19,7 +18,6 @@ import com.stripe.Stripe;
 import com.stripe.exception.SignatureVerificationException;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Event;
-import com.stripe.model.StripeObject;
 import com.stripe.model.checkout.Session;
 import com.stripe.net.Webhook;
 import com.stripe.param.checkout.SessionCreateParams;
@@ -129,7 +127,7 @@ public class PaymentServiceImpl implements PaymentService {
             log.info("Stripe event received: {}", event.getType());
 
             if ("checkout.session.completed".equals(event.getType())) {
-            JsonNode root = objectMapper.readTree(payload);
+                JsonNode root = objectMapper.readTree(payload);
                 String sessionId = root
                         .path("data")
                         .path("object")
