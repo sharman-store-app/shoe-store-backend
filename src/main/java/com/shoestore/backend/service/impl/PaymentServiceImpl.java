@@ -1,5 +1,9 @@
 package com.shoestore.backend.service.impl;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shoestore.backend.dto.payment.CreatePaymentRequestDto;
 import com.shoestore.backend.dto.payment.PaymentDto;
 import com.shoestore.backend.exceptation.PaymentException;
@@ -36,6 +40,7 @@ public class PaymentServiceImpl implements PaymentService {
     private final OrderRepository orderRepository;
     private final PaymentRepository paymentRepository;
     private final PaymentMapper paymentMapper;
+    private final ObjectMapper objectMapper;
 
     @Value("${FRONTEND_URL}")
     private String frontendUrl;
@@ -121,27 +126,29 @@ public class PaymentServiceImpl implements PaymentService {
                     signature,
                     stripeWebhookSecret
             );
-
             log.info("Stripe event received: {}", event.getType());
 
             if ("checkout.session.completed".equals(event.getType())) {
-                StripeObject stripeObject = event
-                        .getDataObjectDeserializer()
-                        .getObject()
-                        .orElseThrow(() -> new PaymentException("Stripe event doesn't contain"
-                                + " object."));
-                Session session = (Session) stripeObject;
-
-                Payment payment = paymentRepository.findBySessionId(session.getId())
-                        .orElseThrow(() -> new EntityNotFoundException("Payment with this session "
-                                + "id wasn't found in database"));
+            JsonNode root = objectMapper.readTree(payload);
+                String sessionId = root
+                        .path("data")
+                        .path("object")
+                        .path("id")
+                        .asText();
+                log.info("Session id: {}", sessionId);
+                Payment payment = paymentRepository.findBySessionId(sessionId)
+                        .orElseThrow(() -> new EntityNotFoundException("Payment with session id "
+                                + sessionId + " wasn't found."));
                 payment.setPaymentStatus(PaymentStatus.PAID);
-
                 Order order = payment.getOrder();
                 order.setStatus(OrderStatus.PAID);
+                log.info("Payment {} marked as PAID", payment.getId());
+                log.info("Order {} marked as PAID", order.getId());
             }
         } catch (SignatureVerificationException e) {
-            throw new PaymentException("Invalid Stripe webhook signature.");
+            throw new PaymentException("Invalid Stripe webhook signature.", e);
+        } catch (JsonProcessingException e) {
+            throw new PaymentException("Failed to parse Stripe webhook payload.", e);
         }
     }
 
