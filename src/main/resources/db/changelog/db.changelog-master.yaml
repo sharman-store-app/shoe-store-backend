@@ -48,5 +48,11 @@ databaseChangeLog:
       file: 16-create-payments-table.yaml
       relativeToChangelogFile: true
   - include:
+      file: 17-create-discount-codes-table.yaml
+      relativeToChangelogFile: true
+  - include:
+      file: 18-add-discount-to-orders.yaml
+      relativeToChangelogFile: true
+  - include:
       file: 99-inserts-to-tables.yaml
       relativeToChangelogFile: true

@@ -38,6 +38,16 @@ public class Order {
     @Column(name = "total_amount", nullable = false)
     private BigDecimal totalAmount;
 
+    @ManyToOne
+    @JoinColumn(name = "discount_code")
+    private Discount discount;
+
+    @Column(name = "discount_amount", nullable = false)
+    private BigDecimal discountAmount;
+
+    @Column(name = "final_amount", nullable = false)
+    private BigDecimal finalAmount;
+
     @Column(name = "customer_first_name")
     private String customerFirstName;
 

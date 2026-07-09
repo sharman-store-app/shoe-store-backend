@@ -10,6 +10,7 @@ import com.shoestore.backend.exceptation.OutOfStockException;
 import com.shoestore.backend.mapper.OrderMapper;
 import com.shoestore.backend.model.Cart;
 import com.shoestore.backend.model.CartItem;
+import com.shoestore.backend.model.Discount;
 import com.shoestore.backend.model.Order;
 import com.shoestore.backend.model.OrderItem;
 import com.shoestore.backend.model.OrderStatus;
@@ -18,6 +19,7 @@ import com.shoestore.backend.model.ProductVariant;
 import com.shoestore.backend.model.User;
 import com.shoestore.backend.repository.CartItemRepository;
 import com.shoestore.backend.repository.CartRepository;
+import com.shoestore.backend.repository.DiscountRepository;
 import com.shoestore.backend.repository.OrderItemRepository;
 import com.shoestore.backend.repository.OrderRepository;
 import com.shoestore.backend.repository.ProductImageRepository;
@@ -26,8 +28,10 @@ import com.shoestore.backend.repository.UserRepository;
 import com.shoestore.backend.service.OrderService;
 import jakarta.persistence.EntityNotFoundException;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -45,6 +49,7 @@ public class OrderServiceImpl implements OrderService {
     private final ProductVariantRepository productVariantRepository;
     private final ProductImageRepository productImageRepository;
     private final OrderMapper orderMapper;
+    private final DiscountRepository discountRepository;
 
     @Override
     @Transactional
@@ -108,7 +113,17 @@ public class OrderServiceImpl implements OrderService {
             throw new EmptyCartException("No items are available to create an order");
         }
 
-        order.setTotalAmount(totalAmount).setStatus(OrderStatus.PENDING);
+        Discount discount = findDiscount(request.discountCode());
+        BigDecimal discountAmount = BigDecimal.ZERO;
+        if (discount != null) {
+            discountAmount = totalAmount
+                    .multiply(discount.getDiscountPercentage())
+                    .divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
+        }
+        BigDecimal finalAmount = totalAmount.subtract(discountAmount);
+
+        order.setTotalAmount(totalAmount).setDiscount(discount).setDiscountAmount(discountAmount)
+                .setFinalAmount(finalAmount).setStatus(OrderStatus.PENDING);
 
         order = orderRepository.save(order);
 
@@ -198,5 +213,16 @@ public class OrderServiceImpl implements OrderService {
             orderItemDtoList.add(orderMapper.toDto(item, imgUrl));
         }
         return orderItemDtoList;
+    }
+
+    private Discount findDiscount(String discountCode) {
+        Discount discount = null;
+        if (discountCode != null && !discountCode.isBlank()) {
+            String code = discountCode.trim().toUpperCase(Locale.ROOT);
+            discount = discountRepository.findById(code)
+                    .orElseThrow(() -> new EntityNotFoundException("Discount code "
+                            + discountCode + " wasn't found in database"));
+        }
+        return discount;
     }
 }

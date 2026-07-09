@@ -6,9 +6,11 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 public record CreateOrderRequestDto(
         @NotNull @Positive Long cartId,
+        @Size(max = 50) String discountCode,
         @NotBlank(message = "First name can't be empty")
         String customerFirstName,
         @NotBlank(message = "Last name can't be empty")

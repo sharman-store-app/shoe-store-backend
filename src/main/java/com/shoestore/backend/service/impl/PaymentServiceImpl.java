@@ -66,15 +66,14 @@ public class PaymentServiceImpl implements PaymentService {
         }
 
         validateStripeSecretKey();
-        long amountInCents = toCents(order.getTotalAmount());
+        long amountInCents = toCents(order.getFinalAmount());
         Stripe.apiKey = stripeSecretKey;
 
         SessionCreateParams params = SessionCreateParams.builder()
                 .setMode(SessionCreateParams.Mode.PAYMENT)
-                .setSuccessUrl(frontendUrl
-                        + "/payments/success-redirect?session_id={CHECKOUT_SESSION_ID}")
-                .setCancelUrl(frontendUrl
-                        + "/payments/cancel?session_id={CHECKOUT_SESSION_ID}")
+                .setSuccessUrl(frontendUrl + "/checkout/complete?orderId=" + order.getId())
+                .setCancelUrl(frontendUrl + "/checkout/payment?orderId=" + order.getId()
+                        + "&paymentCancelled=true")
                 .addLineItem(
                         SessionCreateParams.LineItem.builder()
                                 .setQuantity(1L)
@@ -105,7 +104,7 @@ public class PaymentServiceImpl implements PaymentService {
                     .setOrder(order)
                     .setSessionUrl(session.getUrl())
                     .setSessionId(session.getId())
-                    .setAmount(order.getTotalAmount());
+                    .setAmount(order.getFinalAmount());
             payment = paymentRepository.save(payment);
             return paymentMapper.toDto(payment);
 

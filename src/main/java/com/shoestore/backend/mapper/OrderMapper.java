@@ -23,6 +23,7 @@ public interface OrderMapper {
 
     default OrderResponseDto toDto(Order order, List<OrderItemDto> orderItemDtoList) {
         return new OrderResponseDto(order.getId(), order.getStatus(), order.getTotalAmount(),
+                order.getDiscountAmount(), order.getFinalAmount(),
                 order.getCustomerFirstName(), order.getCustomerLastName(),
                 order.getCustomerPhone(), order.getCustomerEmail(), order.getDeliveryAddress(),
                 order.getRecipientName(), order.getRecipientPhone(), order.getDeliveryType(),

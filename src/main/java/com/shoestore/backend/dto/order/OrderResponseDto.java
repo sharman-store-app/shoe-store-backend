@@ -11,6 +11,8 @@ public record OrderResponseDto(
         Long orderId,
         OrderStatus status,
         BigDecimal totalAmound,
+        BigDecimal discountAmount,
+        BigDecimal finalAmount,
         String customerFirstName,
         String customerLastName,
         String customerPhone,
