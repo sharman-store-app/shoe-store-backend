@@ -125,24 +125,25 @@ public class PaymentServiceImpl implements PaymentService {
                     stripeWebhookSecret
             );
             log.info("Stripe event received: {}", event.getType());
-
-            if ("checkout.session.completed".equals(event.getType())) {
-                JsonNode root = objectMapper.readTree(payload);
-                String sessionId = root
-                        .path("data")
-                        .path("object")
-                        .path("id")
-                        .asText();
-                log.info("Session id: {}", sessionId);
-                Payment payment = paymentRepository.findBySessionId(sessionId)
-                        .orElseThrow(() -> new EntityNotFoundException("Payment with session id "
-                                + sessionId + " wasn't found."));
-                payment.setPaymentStatus(PaymentStatus.PAID);
-                Order order = payment.getOrder();
-                order.setStatus(OrderStatus.PAID);
-                log.info("Payment {} marked as PAID", payment.getId());
-                log.info("Order {} marked as PAID", order.getId());
+            if (!"checkout.session.completed".equals(event.getType())) {
+                return;
             }
+            JsonNode root = objectMapper.readTree(payload);
+            String sessionId = root
+                    .path("data")
+                    .path("object")
+                    .path("id")
+                    .asText();
+            Payment payment = paymentRepository.findBySessionId(sessionId)
+                    .orElseThrow(() -> new EntityNotFoundException("Payment with session id "
+                            + sessionId + " wasn't found."));
+            if (payment.getPaymentStatus() == PaymentStatus.PAID) {
+                log.info("Payment {} has already been processed.", payment.getId());
+                return;
+            }
+            payment.setPaymentStatus(PaymentStatus.PAID);
+            Order order = payment.getOrder();
+            order.setStatus(OrderStatus.PAID);
         } catch (SignatureVerificationException e) {
             throw new PaymentException("Invalid Stripe webhook signature.", e);
         } catch (JsonProcessingException e) {
