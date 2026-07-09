@@ -2,7 +2,6 @@ package com.shoestore.backend.service.impl;
 
 import com.shoestore.backend.dto.payment.CreatePaymentRequestDto;
 import com.shoestore.backend.dto.payment.PaymentDto;
-import com.shoestore.backend.dto.payment.PaymentResponseDto;
 import com.shoestore.backend.exceptation.PaymentException;
 import com.shoestore.backend.mapper.PaymentMapper;
 import com.shoestore.backend.model.Order;
@@ -13,18 +12,24 @@ import com.shoestore.backend.repository.OrderRepository;
 import com.shoestore.backend.repository.PaymentRepository;
 import com.shoestore.backend.service.PaymentService;
 import com.stripe.Stripe;
+import com.stripe.exception.SignatureVerificationException;
 import com.stripe.exception.StripeException;
+import com.stripe.model.Event;
+import com.stripe.model.StripeObject;
 import com.stripe.model.checkout.Session;
+import com.stripe.net.Webhook;
 import com.stripe.param.checkout.SessionCreateParams;
 import jakarta.persistence.EntityNotFoundException;
 import java.math.BigDecimal;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class PaymentServiceImpl implements PaymentService {
     private static final String CURRENCY = "eur";
 
@@ -37,6 +42,9 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Value("${STRIPE_SECRET_KEY}")
     private String stripeSecretKey;
+
+    @Value("${STRIPE_WEBHOOK_SECRET}")
+    private String stripeWebhookSecret;
 
     @Override
     @Transactional
@@ -105,8 +113,36 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public PaymentResponseDto paymentSuccess(String sessionId) {
-        return null;
+    @Transactional
+    public void handleWebhook(String payload, String signature) {
+        try {
+            Event event = Webhook.constructEvent(
+                    payload,
+                    signature,
+                    stripeWebhookSecret
+            );
+
+            log.info("Stripe event received: {}", event.getType());
+
+            if ("checkout.session.completed".equals(event.getType())) {
+                StripeObject stripeObject = event
+                        .getDataObjectDeserializer()
+                        .getObject()
+                        .orElseThrow(() -> new PaymentException("Stripe event doesn't contain"
+                                + " object."));
+                Session session = (Session) stripeObject;
+
+                Payment payment = paymentRepository.findBySessionId(session.getId())
+                        .orElseThrow(() -> new EntityNotFoundException("Payment with this session "
+                                + "id wasn't found in database"));
+                payment.setPaymentStatus(PaymentStatus.PAID);
+
+                Order order = payment.getOrder();
+                order.setStatus(OrderStatus.PAID);
+            }
+        } catch (SignatureVerificationException e) {
+            throw new PaymentException("Invalid Stripe webhook signature.");
+        }
     }
 
     private void validateStripeSecretKey() {
