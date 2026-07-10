@@ -190,7 +190,7 @@ public class OrderServiceImpl implements OrderService {
 
     private String getProductImgUrl(ProductVariant productVariant) {
         ProductImage productImage = productImageRepository
-                .findByProductIdAndColor(productVariant.getId(),
+                .findByProductIdAndColor(productVariant.getProduct().getId(),
                         productVariant.getColor()).orElse(null);
         if (productImage != null) {
             return productImage.getMainUrl();
