@@ -240,6 +240,10 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public void deleteProduct(Long id) {
         Product product = findProduct(id);
+        List<ProductVariant> productVariants = productVariantRepository.findByProductId(id);
+        productVariants.forEach(productVariantRepository::delete);
+        List<ProductImage> productImages = productImageRepository.findByProductId(id);
+        productImages.forEach(productImageRepository::delete);
         productRepository.delete(product);
     }
 
