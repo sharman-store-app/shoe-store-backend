@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: discount-codes-table
+      author: wojtek-a
+      changes:
+        - createTable:
+            tableName: discount_codes
+            columns:
+              - column:
+                  name: code
+                  type: varchar(50)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: discount_percentage
+                  type: decimal(5,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: updated_at
+                  type: timestamp with time zone
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_deleted
+                  type: boolean
+                  defaultValueBoolean: false
+                  constraints:
+                    nullable: false

@@ -1,0 +1,33 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-discount-to-orders
+      author: wojtek-a
+      changes:
+        - addColumn:
+            tableName: orders
+            columns:
+              - column:
+                  name: discount_code
+                  type: varchar(50)
+              - column:
+                  name: discount_amount
+                  type: decimal(10,2)
+                  defaultValueNumeric: 0.00
+                  constraints:
+                    nullable: false
+              - column:
+                  name: final_amount
+                  type: decimal(10,2)
+                  defaultValueNumeric: 0.00
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: orders
+            baseColumnNames: discount_code
+            referencedTableName: discount_codes
+            referencedColumnNames: code
+            constraintName: fk_orders_discounts
+        - sql:
+            sql: |
+              UPDATE orders
+              SET final_amount = total_amount;

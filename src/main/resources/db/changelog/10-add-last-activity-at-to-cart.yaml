@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-last-activity-at-to-carts
+      author: wojtek-a
+      changes:
+        - addColumn:
+            tableName: carts
+            columns:
+              - column:
+                  name: last_activity_at
+                  type: TIMESTAMP
+        - update:
+            tableName: carts
+            columns:
+              - column:
+                  name: last_activity_at
+                  valueComputed: CURRENT_TIMESTAMP
+        - addNotNullConstraint:
+            tableName: carts
+            columnName: last_activity_at
+            columnDataType: TIMESTAMP

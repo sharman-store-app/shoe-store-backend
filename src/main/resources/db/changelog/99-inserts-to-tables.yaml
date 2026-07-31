@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: inserts-to-tables
+      author: wojtek-a
+      changes:
+        #INSERTS TO TABLE ROLES
+        - insert:
+            tableName: roles
+            columns:
+              - column: { name: role_name, value: 'ADMIN' }
+        - insert:
+            tableName: roles
+            columns:
+              - column: { name: role_name, value: 'CUSTOMER' }
+        #INSERTS TO TABLE USERS
+        - insert:
+            tableName: users_table
+            columns:
+                - column: { name: first_name, value: 'John' }
+                - column: { name: last_name, value: 'admin' }
+                - column: { name: email, value: 'admin@google.com'}
+                - column: { name: auth_provider, value: 'LOCAL'}
+                - column: { name: phone, value: '+123456789'}
+                - column: { name: password, value: '$2a$10$WSWYX5UxsJjWEHFXZkySG.UOuTxnvQHo5GUxkoNFYZWNzxw5woapO'}
+                - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP}
+                - column: { name: role_id, valueNumeric: 1}
+                - column: { name: is_deleted, valueBoolean: false}
